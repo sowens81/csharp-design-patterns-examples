@@ -1,0 +1,33 @@
+@startuml
+
+left to right direction
+
+Class Client {
+    +Construct()
+}
+
+Class Director {
+    +Construct()
+}
+
+interface Builder {
+    +BuildPartA()
+    +BuildPartB()
+}
+
+Class ConcreteBuilder {
+    +BuildPartA()
+    +BuildPartB()
+    +GetResult()
+}
+
+Class Product {
+}
+
+
+Client --> Director
+Director --> Builder : Import
+ConcreteBuilder --> Builder : Extends
+ConcreteBuilder -[dashed]-> Product : <<instantiate>>
+
+@enduml

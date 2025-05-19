@@ -1,0 +1,57 @@
+@startuml
+
+left to right direction
+
+Class Client {
+}
+
+interface AbstractFactory {
+    +CreateProductA()
+    +CreateProductB()
+}
+
+Class ConcreteFactory1 {
+    +CreateProductA()
+    +CreateProductB()
+}
+
+Class ConcreteFactory2 {
+    +CreateProductA()
+    +CreateProductB()
+}
+
+interface AbstractProductA {
+}
+
+Class ProductA1 {
+
+}
+
+Class ProductA2 {
+
+}
+
+interface AbstractProductB {}
+
+Class ProductB1 {
+
+}
+Class ProductB2 {
+
+}
+
+Client --> AbstractFactory : <<Import>>
+Client --> AbstractProductA : <<Import>> 
+Client --> AbstractProductB : <<Import>> 
+AbstractFactory <-[dashed]- ConcreteFactory1
+AbstractFactory <-[dashed]- ConcreteFactory2
+ConcreteFactory1 -[dashed]-> ProductA1 : <<instantiate>>
+ConcreteFactory1 -[dashed]-> ProductB1 : <<instantiate>>
+ConcreteFactory2 -[dashed]-> ProductA2 : <<instantiate>>
+ConcreteFactory2 -[dashed]-> ProductB2 : <<instantiate>>
+AbstractProductA <|-- ProductA1
+AbstractProductA <|-- ProductA2
+AbstractProductB <|-- ProductB1
+AbstractProductB <|-- ProductB2
+
+@enduml
